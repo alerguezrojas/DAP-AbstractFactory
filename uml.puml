@@ -1,0 +1,53 @@
+@startuml
+class products.HomeCoaster {
++ void cover()
+}
+
+interface products.Lid {
+~ void cover()
+}
+
+class products.HomeMug {
++ void fill(String)
+}
+
+interface factories.DrinkwareFactory {
+~ Cup createCup()
+~ Lid createLid()
+}
+
+interface products.Cup {
+~ void fill(String)
+}
+
+class factories.HomeDrinkwareFactory {
++ Cup createCup()
++ Lid createLid()
+}
+
+class factories.ToGoDrinkwareFactory {
++ Cup createCup()
++ Lid createLid()
+}
+
+class Main {
++ {static} void main(String[])
+}
+
+class products.ToGoLid {
++ void cover()
+}
+
+class products.ToGoCup {
++ void fill(String)
+}
+
+
+
+products.Lid <|.. products.HomeCoaster
+products.Cup <|.. products.HomeMug
+factories.DrinkwareFactory <|.. factories.HomeDrinkwareFactory
+factories.DrinkwareFactory <|.. factories.ToGoDrinkwareFactory
+products.Lid <|.. products.ToGoLid
+products.Cup <|.. products.ToGoCup
+@enduml
